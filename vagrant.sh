@@ -1,7 +1,7 @@
 #!/bin/bash
 # 2.2. Host System Requirements
-sed -i 's|http://archive.|http://cn.archive.|g' /etc/apt/sources.list
-apt-get update
+# sed -i 's|http://archive.|http://cn.archive.|g' /etc/apt/sources.list
+# apt-get update
 apt-get install -y build-essential bison texinfo
 ln -fs bash /bin/sh
 /vagrant/version-check.sh
