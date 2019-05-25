@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "ubuntu/xenial64"
+  config.vm.box = "ubuntu/trusty64"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -48,14 +48,14 @@ Vagrant.configure("2") do |config|
   #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
-    vb.memory = "1024"
-    vb.cpus = 2
+    vb.memory = "4096"
+    vb.cpus = 4
     lfsDisk = "lfs.vdi"
     vb.name = "lfs"
     if not File.exist?(lfsDisk)
       vb.customize ['createhd', '--filename', lfsDisk, '--size', 40 * 1024]
     end
-    vb.customize ['storageattach', :id,  '--storagectl', 'SCSI', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', lfsDisk]
+    vb.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 2, '--device', 0, '--type', 'hdd', '--medium', lfsDisk]
   end
   #
   # View the documentation for the provider you are using for more
