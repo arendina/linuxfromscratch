@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 time ( $LFS/script/5.4.Binutils-2.29-Pass-1.sh && \
 $LFS/script/5.5.GCC-7.2.0-Pass-1.sh && \
 $LFS/script/5.6.Linux-4.12.7-API-Headers.sh && \
