@@ -1,8 +1,14 @@
 #!/bin/bash
-# 5.4. Binutils-2.29 - Pass 1
+
+# 5.4. Binutils-2.32 - Pass 1
+
+set -e
+
+ver='2.32'
+
 cd $LFS/sources
-tar -xvf binutils-2.29.tar.bz2
-cd binutils-2.29
+tar -xvf binutils-$ver.tar.xz
+cd binutils-$ver
 mkdir -v build
 cd       build
 ../configure --prefix=/tools            \
@@ -17,4 +23,4 @@ case $(uname -m) in
 esac
 make install
 cd $LFS/sources
-rm -rf binutils-2.29
+rm -rf binutils-$ver
