@@ -2,8 +2,8 @@
 set -e
 time (
     $LFS/script/5.4.Binutils-Pass-1.sh && \
-    $LFS/script/5.5.GCC-7.2.0-Pass-1.sh && \
-    $LFS/script/5.6.Linux-4.12.7-API-Headers.sh && \
+    $LFS/script/5.5.GCC-Pass-1.sh && \
+    $LFS/script/5.6.Linux-API-Headers.sh && \
     $LFS/script/5.7.Glibc-2.26.sh && \
     $LFS/script/5.8.Libstdc++-7.2.0.sh && \
     $LFS/script/5.9.Binutils-2.29-Pass-2.sh && \
