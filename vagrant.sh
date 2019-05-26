@@ -30,10 +30,16 @@ cat >> /etc/fstab << EOF
 EOF
 
 # 3.1. Introduction
+echo "Preparing the sources"
 mkdir -v $LFS/sources
 chmod -v a+wt $LFS/sources
 cp -rv /vagrant/sources $LFS
 cp -rv /vagrant/script $LFS
 cp -v /vagrant/lfs-{prepare,build,config}.sh $LFS
+
+# 4.2. Creating the $LFS/tools Directory
+echo "Creating the $LFS/tools Directory"
+mkdir -v $LFS/tools
+ln -sv $LFS/tools /
 
 
