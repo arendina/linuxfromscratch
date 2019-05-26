@@ -43,6 +43,7 @@ mkdir -v $LFS/tools
 ln -sv $LFS/tools /
 
 # 4.3. Adding the LFS User
+echo "Adding the LFS user"
 groupadd lfs
 useradd -s /bin/bash -g lfs -m -k /dev/null lfs
 cp -rv /home/vagrant/.ssh /home/lfs
@@ -53,4 +54,20 @@ lfs ALL=(ALL) NOPASSWD:ALL
 EOF
 chmod -v 440 /etc/sudoers.d/lfs
 
-
+# 4.4. Setting Up the Environment
+echo "Setting up the environment"
+cat > /home/lfs/.bash_profile << EOF
+exec env -i HOME=/home/lfs TERM=xterm-256color PS1='\u:\w\$ ' /bin/bash
+EOF
+cat > /home/lfs/.bashrc << EOF
+set +h
+umask 022
+LFS=$LFS
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=/tools/bin:/bin:/usr/bin
+MAKEFLAGS='-j 2'
+export LFS LC_ALL LFS_TGT PATH MAKEFLAGS
+EOF
+chown -v lfs:lfs /home/lfs/.bash_profile
+chown -v lfs:lfs /home/lfs/.bashrc
