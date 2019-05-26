@@ -29,4 +29,11 @@ cat >> /etc/fstab << EOF
 /dev/sdb2 $LFS ext4 defaults 0 0
 EOF
 
+# 3.1. Introduction
+mkdir -v $LFS/sources
+chmod -v a+wt $LFS/sources
+cp -rv /vagrant/sources $LFS
+cp -rv /vagrant/script $LFS
+cp -v /vagrant/lfs-{prepare,build,config}.sh $LFS
+
 
