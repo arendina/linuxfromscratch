@@ -1,8 +1,13 @@
 #!/bin/bash
-# 5.8. Libstdc++-7.2.0
+# 5.8. Libstdc++-$ver
+
+set -e
+
+ver='8.2.0'
+
 cd $LFS/sources
-tar -xvf gcc-7.2.0.tar.xz
-cd gcc-7.2.0
+tar -xvf gcc-$ver.tar.xz
+cd gcc-$ver
 mkdir -v build
 cd       build
 ../libstdc++-v3/configure           \
@@ -12,8 +17,8 @@ cd       build
     --disable-nls                   \
     --disable-libstdcxx-threads     \
     --disable-libstdcxx-pch         \
-    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/7.2.0
+    --with-gxx-include-dir=/tools/$LFS_TGT/include/c++/$ver
 make
 make install
 cd $LFS/sources
-rm -rf gcc-7.2.0
+rm -rf gcc-$ver
