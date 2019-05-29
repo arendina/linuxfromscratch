@@ -1,8 +1,11 @@
 #!/bin/bash
-# 5.9. Binutils-2.29 - Pass 2
+# 5.9. Binutils-$ver - Pass 2
+
+ver='2.32'
+
 cd $LFS/sources
-tar -xvf binutils-2.29.tar.bz2
-cd binutils-2.29
+tar -xvf binutils-$ver.tar.xz
+cd binutils-$ver
 mkdir -v build
 cd       build
 CC=$LFS_TGT-gcc                \
@@ -20,4 +23,4 @@ make -C ld clean
 make -C ld LIB_PATH=/usr/lib:/lib
 cp -v ld/ld-new /tools/bin
 cd $LFS/sources
-rm -rf binutils-2.29
+rm -rf binutils-$ver
