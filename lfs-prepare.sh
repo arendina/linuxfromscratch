@@ -5,8 +5,8 @@ time ($LFS/script/5.4.Binutils-Pass-1.sh && \
     $LFS/script/5.6.Linux-API-Headers.sh && \
     $LFS/script/5.7.Glibc.sh && \
     $LFS/script/5.8.Libstdc++.sh && \
-    $LFS/script/5.9.Binutils-Pass-2.sh
-#    $LFS/script/5.10.GCC-7.2.0-Pass-2.sh && \
+    $LFS/script/5.9.Binutils-Pass-2.sh && \
+    $LFS/script/5.10.GCC-Pass-2.sh
 #    $LFS/script/5.11.Tcl-core-8.6.7.sh && \
 #    $LFS/script/5.12.Expect-5.45.sh && \
 #    $LFS/script/5.13.DejaGNU-1.6.sh && \

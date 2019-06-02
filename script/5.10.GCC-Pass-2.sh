@@ -1,10 +1,20 @@
 #!/bin/bash
-# 5.10. GCC-7.2.0 - Pass 2
+# 5.10. GCC-$gcc_ver - Pass 2
+
+set -e
+
+gcc_ver='8.2.0'
+mpfr_ver='4.0.2'
+gmp_ver='6.1.2'
+mpc_ver='1.1.0'
+
 cd $LFS/sources
-tar -xvf gcc-7.2.0.tar.xz
-cd gcc-7.2.0
+tar -xvf gcc-$gcc_ver.tar.xz
+cd gcc-$gcc_ver
+
 cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
   `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+
 for file in gcc/config/{linux,i386/linux{,64}}.h
 do
   cp -uv $file{,.orig}
@@ -17,18 +27,19 @@ do
 #define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
   touch $file.orig
 done
+
 case $(uname -m) in
   x86_64)
     sed -e '/m64=/s/lib64/lib/' \
         -i.orig gcc/config/i386/t-linux64
   ;;
 esac
-tar -xf ../mpfr-3.1.5.tar.xz
-mv -v mpfr-3.1.5 mpfr
-tar -xf ../gmp-6.1.2.tar.xz
-mv -v gmp-6.1.2 gmp
-tar -xf ../mpc-1.0.3.tar.gz
-mv -v mpc-1.0.3 mpc
+tar -xf ../mpfr-$mpfr_ver.tar.xz
+mv -v mpfr-$mpfr_ver mpfr
+tar -xf ../gmp-$gmp_ver.tar.xz
+mv -v gmp-$gmp_ver gmp
+tar -xf ../mpc-$mpc_ver.tar.gz
+mv -v mpc-$mpc_ver mpc
 mkdir -v build
 cd       build
 CC=$LFS_TGT-gcc                                    \
@@ -48,4 +59,4 @@ make
 make install
 ln -sv gcc /tools/bin/cc
 cd $LFS/sources
-rm -rf gcc-7.2.0
+rm -rf gcc-$gcc_ver
