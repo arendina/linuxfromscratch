@@ -1,8 +1,12 @@
 #!/bin/bash
-# 5.12. Expect-5.45
+# 5.12. Expect-$ver
+set -e
+
+ver='5.45.4'
+``
 cd $LFS/sources
-tar -xvf expect5.45.tar.gz
-cd expect5.45
+tar -xvf expect$ver.tar.gz
+cd expect$ver
 cp -v configure{,.orig}
 sed 's:/usr/local/bin:/bin:' configure.orig > configure
 ./configure --prefix=/tools       \
@@ -12,4 +16,4 @@ make
 make test
 make SCRIPTS="" install
 cd $LFS/sources
-rm -rf expect5.45
+rm -rf expect$ver
