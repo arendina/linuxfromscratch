@@ -13,7 +13,7 @@ sed 's:/usr/local/bin:/bin:' configure.orig > configure
             --with-tcl=/tools/lib \
             --with-tclinclude=/tools/include
 make
-make test
+# make test
 make SCRIPTS="" install
 cd $LFS/sources
 rm -rf expect$ver

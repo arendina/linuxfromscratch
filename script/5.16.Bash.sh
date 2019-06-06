@@ -1,12 +1,23 @@
 #!/bin/bash
-# 5.16. Bash-4.4
+# 5.16. Bash-$ver
+
+set -e
+
+ver='5.0'
+
 cd $LFS/sources
-tar -xvf bash-4.4.tar.gz
-cd bash-4.4
+tar -xvf bash-$ver.tar.gz
+cd bash-$ver
+
 ./configure --prefix=/tools --without-bash-malloc
+
 make
-make tests
+
+# make tests
+
 make install
+
 ln -sv bash /tools/bin/sh
+
 cd $LFS/sources
-rm -rf bash-4.4
+rm -rf bash-$ver
