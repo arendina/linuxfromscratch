@@ -2,8 +2,8 @@
 
 # 2.2. Host System Requirements
 echo "Checking host system requirements"
-apt update
-apt install -y build-essential bison texinfo
+apt-get update
+apt-get install -y build-essential bison texinfo
 ln -fs bash /bin/sh
 /vagrant/version-check.sh
 
@@ -23,8 +23,8 @@ export LFS=/mnt/lfs
 # 2.7. Mounting the New Partition
 echo "Mounting the New Partition"
 mkdir -pv $LFS
-/sbin/swapon -v /dev/sdb
-mount -v -t ext4 /dev/sdb $LFS
+/sbin/swapon -v /dev/sdb1
+mount -v -t ext4 /dev/sdb2 $LFS
 cat >> /etc/fstab << EOF
 /dev/sdb1 none swap defaults 0 0
 /dev/sdb2 $LFS ext4 defaults 0 0
