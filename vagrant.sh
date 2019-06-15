@@ -9,12 +9,12 @@ ln -fs bash /bin/sh
 
 # 2.4. Creating a New Partition
 echo "Creating a New Partition"
-sfdisk /dev/sdc < /vagrant/data/sdc.out
+sfdisk /dev/sdb < /vagrant/data/sdb.out
 
 # 2.5. Creating a File System on the Partition
 echo "Creating a File System on the Partition"
-mkswap /dev/sdc1
-mkfs -v -t ext4 /dev/sdc2
+mkswap /dev/sdb1
+mkfs -v -t ext4 /dev/sdb2
 
 # 2.6. Setting The $LFS Variable
 echo "Setting The $LFS Variable"
@@ -23,11 +23,11 @@ export LFS=/mnt/lfs
 # 2.7. Mounting the New Partition
 echo "Mounting the New Partition"
 mkdir -pv $LFS
-/sbin/swapon -v /dev/sdc1
-mount -v -t ext4 /dev/sdc2 $LFS
+/sbin/swapon -v /dev/sdb
+mount -v -t ext4 /dev/sdb $LFS
 cat >> /etc/fstab << EOF
-/dev/sdc1 none swap defaults 0 0
-/dev/sdc2 $LFS ext4 defaults 0 0
+/dev/sdb1 none swap defaults 0 0
+/dev/sdb2 $LFS ext4 defaults 0 0
 EOF
 
 # 3.1. Introduction
