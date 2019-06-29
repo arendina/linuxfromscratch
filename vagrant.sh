@@ -35,7 +35,7 @@ echo "Preparing the sources"
 mkdir -v $LFS/sources
 chmod -v a+wt $LFS/sources
 cp -rv /vagrant/sources $LFS
-cp -rv /vagrant/script $LFS
+cp -rv /vagrant/scripts $LFS
 cp -v /vagrant/lfs-{prepare,build,config}.sh $LFS
 
 # 4.2. Creating the $LFS/tools Directory
