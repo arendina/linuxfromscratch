@@ -1,12 +1,15 @@
 #!/bin/bash
-# 6.6. Creating Essential Files and Symlinks
-ln -sv /tools/bin/{bash,cat,dd,echo,ln,pwd,rm,stty} /bin
-ln -sv /tools/bin/{install,perl} /usr/bin
-ln -sv /tools/lib/libgcc_s.so{,.1} /usr/lib
-ln -sv /tools/lib/libstdc++.{a,so{,.6}} /usr/lib
-sed 's/tools/usr/' /tools/lib/libstdc++.la > /usr/lib/libstdc++.la
+ln -sv /tools/bin/{bash,cat,chmod,dd,echo,ln,mkdir,pwd,rm,stty,touch} /bin
+ln -sv /tools/bin/{env,install,perl,printf}         /usr/bin
+ln -sv /tools/lib/libgcc_s.so{,.1}                  /usr/lib
+ln -sv /tools/lib/libstdc++.{a,so{,.6}}             /usr/lib
+
+install -vdm755 /usr/lib/pkgconfig
+
 ln -sv bash /bin/sh
+
 ln -sv /proc/self/mounts /etc/mtab
+
 cat > /etc/passwd << "EOF"
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/dev/null:/bin/false
@@ -14,6 +17,7 @@ daemon:x:6:6:Daemon User:/dev/null:/bin/false
 messagebus:x:18:18:D-Bus Message Daemon User:/var/run/dbus:/bin/false
 nobody:x:99:99:Unprivileged User:/dev/null:/bin/false
 EOF
+
 cat > /etc/group << "EOF"
 root:x:0:
 bin:x:1:daemon
@@ -33,9 +37,18 @@ usb:x:14:
 cdrom:x:15:
 adm:x:16:
 messagebus:x:18:
-systemd-journal:x:23:
 input:x:24:
 mail:x:34:
+kvm:x:61:
+wheel:x:97:
 nogroup:x:99:
 users:x:999:
 EOF
+
+exec /tools/bin/bash --login +h
+
+touch /var/log/{btmp,lastlog,faillog,wtmp}
+chgrp -v utmp /var/log/lastlog
+chmod -v 664  /var/log/lastlog
+chmod -v 600  /var/log/btmp
+
