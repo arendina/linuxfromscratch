@@ -1,8 +1,13 @@
 #!/bin/bash
-# 6.15. Bc-1.07.1
+
+# 6.15. Bc-$ver
+
+ver='1.07.1'
+
 cd /sources
-tar -xvf bc-1.07.1.tar.gz
-cd bc-1.07.1
+tar -xvf bc-$ver.tar.gz
+cd bc-$ver
+
 cat > bc/fix-libmath_h << "EOF"
 #! /bin/bash
 sed -e '1   s/^/{"/' \
@@ -14,15 +19,22 @@ sed -e '1   s/^/{"/' \
 sed -e '$ s/$/0}/' \
     -i libmath.h
 EOF
+
 ln -sv /tools/lib/libncursesw.so.6 /usr/lib/libncursesw.so.6
-ln -sfv libncurses.so.6 /usr/lib/libncurses.so
+ln -sfv libncursesw.so.6 /usr/lib/libncurses.so
+
 sed -i -e '/flex/s/as_fn_error/: ;; # &/' configure
-./configure --prefix=/usr           \
-            --with-readline         \
-            --mandir=/usr/share/man \
-            --infodir=/usr/share/info
+
+./configure --prefix=/usr \
+    --with-readline \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info
+
 make
-echo "quit" | ./bc/bc -l Test/checklib.b
+
+# echo "quit" | ./bc/bc -l Test/checklib.b
+
 make install
+
 cd /sources
-rm -rf bc-1.07.1
+rm -rf bc-$ver

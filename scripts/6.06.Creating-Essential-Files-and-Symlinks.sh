@@ -1,4 +1,3 @@
-#!/bin/bash
 ln -sv /tools/bin/{bash,cat,chmod,dd,echo,ln,mkdir,pwd,rm,stty,touch} /bin
 ln -sv /tools/bin/{env,install,perl,printf}         /usr/bin
 ln -sv /tools/lib/libgcc_s.so{,.1}                  /usr/lib
