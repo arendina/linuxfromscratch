@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source /home/lfs/.bashrc
+
 chroot "$LFS" /tools/bin/env -i \
     HOME=/root                  \
     TERM="$TERM"                \
