@@ -12,7 +12,7 @@ Clone or download this repository and change to the repository folder in the com
 $ git clone git@github.com:arendina/linuxfromscratch.git
 ```
 
-Run `vagrant up` to start and provision the vagrant environment using [ubuntu/xenial64](https://app.vagrantup.com/ubuntu/boxes/xenial64). The process may spend a long time around decade minutes, because of downloading the os image and essential software.
+Run `vagrant up` to start and provision the vagrant environment using [bento/ubuntu-18.04](https://app.vagrantup.com/bento/boxes/ubuntu-18.04). The process may spend a long time around decade minutes, because of downloading the os image and essential software.
 
 ```bash
 $ vagrant up
