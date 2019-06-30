@@ -31,5 +31,7 @@ time ($LFS/scripts/5.04.Binutils-Pass-1.sh && \
     $LFS/scripts/5.31.Sed.sh && \
     $LFS/scripts/5.32.Tar.sh && \
     $LFS/scripts/5.33.Texinfo.sh && \
-    $LFS/scripts/5.34.Xz.sh \
+    $LFS/scripts/5.34.Xz.sh  && \
+    $LFS/scripts/5.35.Stripping.sh && \
+    $LFS/scripts/5.36.Changing-Ownership.sh \
 ) 2>&1 | tee $LFS/build-$(date +%Y%m%dT%H%M%S).log
