@@ -1,5 +1,7 @@
 # Linux From Scratch
 
+Note: This is a fork, you can clone the original at https://github.com/Yibo-Li/linuxfromscratch.git
+
 This is a [Vagrant](https://www.vagrantup.com/) building process for [Linux From Scratch](http://www.linuxfromscratch.org/lfs/).
 
 Before the tour of lfs building, you need install [VirtualBox](https://www.virtualbox.org/) and [Vagrant](https://www.vagrantup.com/) on your PC.
@@ -7,76 +9,47 @@ Before the tour of lfs building, you need install [VirtualBox](https://www.virtu
 Clone or download this repository and change to the repository folder in the command line.
 
 ```bash
-$ git clone https://github.com/Yibo-Li/linuxfromscratch.git
-Cloning into 'linuxfromscratch'...
-...
-$ cd linuxfromscratch && ls .
-LFS-BOOK-8.1.pdf  lfs-config.sh*   README.md  sources/     Vagrantfile
-lfs-build.sh*     lfs-prepare.sh*  script/    vagrant.sh*  version-check.sh*
+$ git clone git@github.com:arendina/linuxfromscratch.git
 ```
 
 Run `vagrant up` to start and provision the vagrant environment using [ubuntu/xenial64](https://app.vagrantup.com/ubuntu/boxes/xenial64). The process may spend a long time around decade minutes, because of downloading the os image and essential software.
 
 ```bash
 $ vagrant up
-Bringing machine 'default' up with 'virtualbox' provider...
-==> default: Importing base box 'ubuntu/xenial64'...
-==> default: Matching MAC address for NAT networking...
-==> default: Checking if box 'ubuntu/xenial64' is up to date...
-==> default: Setting the name of the VM: lfs
-==> default: Clearing any previously set network interfaces...
-==> default: Preparing network interfaces based on configuration...
-    default: Adapter 1: nat
-==> default: Forwarding ports...
-    default: 22 (guest) => 2222 (host) (adapter 1)
-==> default: Running 'pre-boot' VM customizations...
-==> default: Booting VM...
-...
 ```
 
 When the vagrant environment is ready, log in as lfs and open a tmux session to prevent terminal close unexpectedly.
 
 ```bash
 $ vagrant ssh -- -l lfs
-Welcome to Ubuntu 16.04.3 LTS (GNU/Linux 4.4.0-109-generic x86_64)
-
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/advantage
-
-  Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
-
-18 packages can be updated.
-13 updates are security updates.
-
-*** System restart required ***
-Last login: Sat Jan 20 17:45:23 2018 from 10.0.2.2
-lfs@ubuntu-xenial:~$ tmux new -s work
-...
 ```
 
 Test the environment variables `$LFS` and `$LFS_TGT` are `/mnt/lfs` and `x86_64-lfs-linux-gnu`, respectively. Besides the mount result is same as bellow.
 
-```bash
-lfs@ubuntu-xenial:~$ echo $LFS
-/mnt/lfs
-lfs@ubuntu-xenial:~$ echo $LFS_TGT
-x86_64-lfs-linux-gnu
-lfs@ubuntu-xenial:~$ lsblk
-NAME   MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-sda      8:0    0  10G  0 disk
-`-sda1   8:1    0  10G  0 part /
-sdb      8:16   0  10M  0 disk
-sdc      8:32   0  40G  0 disk
-|-sdc1   8:33   0  32G  0 part /mnt/lfs
-`-sdc2   8:34   0   8G  0 part [SWAP]
 ```
+$ echo $LFS
+/mnt/lfs
+$ echo $LFS_TGT
+x86_64-lfs-linux-gnu
+$ lsblk
+NAME                   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                      8:0    0   64G  0 disk
+`-sda1                   8:1    0   64G  0 part
+  |-vagrant--vg-root   253:0    0   63G  0 lvm  /
+  `-vagrant--vg-swap_1 253:1    0  980M  0 lvm  [SWAP]
+sdb                      8:16   0   40G  0 disk
+|-sdb1                   8:17   0    2G  0 part [SWAP]
+`-sdb2                   8:18   0   38G  0 part /mnt/lfs
+
+$ lscpu
+$ echo $MAKEFLAGS
+```
+If you need to change the MAKEFLAGS, you can edit ~/.bashrc
 
 The next is central commands to build the lfs.
 
 ```bash
-lfs@ubuntu-xenial:~$ $LFS/lfs-prepare.sh
+$ $LFS/lfs-prepare.sh
 ...
 lfs@ubuntu-xenial:~$ sudo -E -u root /bin/bash - <<EOF
 export
