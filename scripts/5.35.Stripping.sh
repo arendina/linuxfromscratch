@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 strip --strip-debug /tools/lib/*
 /usr/bin/strip --strip-unneeded /tools/{,s}bin/*
 

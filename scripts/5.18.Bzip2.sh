@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.18. Bzip2-$ver
 
-set -e
-
 ver='1.0.6'
 
 cd $LFS/sources

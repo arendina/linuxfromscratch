@@ -2,8 +2,6 @@
 
 # 5.4. Binutils-2.32 - Pass 1
 
-set -e
-
 ver='2.32'
 
 cd $LFS/sources
@@ -19,6 +17,7 @@ cd       build
              --target=$LFS_TGT          \
              --disable-nls              \
              --disable-werror
+
 make
 
 case $(uname -m) in

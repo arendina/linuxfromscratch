@@ -1,6 +1,5 @@
 #!/bin/bash
 # 5.30. Perl-$ver
-set -e
 
 ver='5.28.1'
 

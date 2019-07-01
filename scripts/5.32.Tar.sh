@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.32. Tar-$ver
 
-set -e
-
 ver='1.31'
 
 cd $LFS/sources

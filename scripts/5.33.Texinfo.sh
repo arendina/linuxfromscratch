@@ -1,7 +1,4 @@
 #!/bin/bash
-# 5.32. Tar-$ver
-
-set -e
 
 ver='6.5'
 

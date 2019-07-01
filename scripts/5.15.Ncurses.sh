@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.15. Ncurses-$ver
 
-set -e
-
 ver='6.1'
 
 cd $LFS/sources
@@ -10,6 +8,7 @@ tar -xvf ncurses-$ver.tar.gz
 cd ncurses-$ver
 
 sed -i s/mawk// configure
+
 ./configure --prefix=/tools \
             --with-shared   \
             --without-debug \
@@ -20,7 +19,6 @@ sed -i s/mawk// configure
 make
 
 make install
-
 ln -s libncursesw.so /tools/lib/libncurses.so
 
 cd $LFS/sources

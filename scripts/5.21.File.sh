@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.21. File-5.31
 
-set -e
-
 tarball='file-5.36.tar.gz'
 ver='5.36'
 

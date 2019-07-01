@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.20. Diffutils-$ver
 
-set -e
-
 ver='3.7'
 
 cd $LFS/sources

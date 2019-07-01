@@ -1,6 +1,5 @@
 #!/bin/bash
 # 5.26. Gzip-$ver
-set -e
 
 ver='1.10'
 

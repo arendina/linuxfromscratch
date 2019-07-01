@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.10. GCC-$gcc_ver - Pass 2
 
-set -e
-
 gcc_ver='8.2.0'
 mpfr_ver='4.0.2'
 gmp_ver='6.1.2'
@@ -34,14 +32,17 @@ case $(uname -m) in
         -i.orig gcc/config/i386/t-linux64
   ;;
 esac
-tar -xf ../mpfr-$mpfr_ver.tar.xz
-mv -v mpfr-$mpfr_ver mpfr
-tar -xf ../gmp-$gmp_ver.tar.xz
-mv -v gmp-$gmp_ver gmp
-tar -xf ../mpc-$mpc_ver.tar.gz
-mv -v mpc-$mpc_ver mpc
+
+tar -xf ../mpfr-4.0.2.tar.xz
+mv -v mpfr-4.0.2 mpfr
+tar -xf ../gmp-6.1.2.tar.xz
+mv -v gmp-6.1.2 gmp
+tar -xf ../mpc-1.1.0.tar.gz
+mv -v mpc-1.1.0 mpc
+
 mkdir -v build
 cd       build
+
 CC=$LFS_TGT-gcc                                    \
 CXX=$LFS_TGT-g++                                   \
 AR=$LFS_TGT-ar                                     \
@@ -55,8 +56,12 @@ RANLIB=$LFS_TGT-ranlib                             \
     --disable-multilib                             \
     --disable-bootstrap                            \
     --disable-libgomp
+
 make
+
 make install
+
 ln -sv gcc /tools/bin/cc
+
 cd $LFS/sources
 rm -rf gcc-$gcc_ver

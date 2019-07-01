@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.24. Gettext-$ver
 
-set -e
-
 ver='0.19.8.1'
 
 cd $LFS/sources

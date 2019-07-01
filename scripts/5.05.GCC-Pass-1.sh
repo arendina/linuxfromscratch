@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.5. GCC-7.2.0 - Pass 1
 
-set -e
-
 gcc_ver='8.2.0'
 mpfr_ver='4.0.2'
 gmp_ver='6.1.2'
@@ -11,12 +9,14 @@ mpc_ver='1.1.0'
 cd $LFS/sources
 tar -xvf gcc-$gcc_ver.tar.xz
 cd gcc-$gcc_ver
+
 tar -xf ../mpfr-$mpfr_ver.tar.xz
 mv -v mpfr-$mpfr_ver mpfr
 tar -xf ../gmp-$gmp_ver.tar.xz
 mv -v gmp-$gmp_ver gmp
 tar -xf ../mpc-$mpc_ver.tar.gz
 mv -v mpc-$mpc_ver mpc
+
 for file in gcc/config/{linux,i386/linux{,64}}.h
 do
   cp -uv $file{,.orig}
@@ -29,14 +29,17 @@ do
 #define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
   touch $file.orig
 done
+
 case $(uname -m) in
   x86_64)
     sed -e '/m64=/s/lib64/lib/' \
         -i.orig gcc/config/i386/t-linux64
  ;;
 esac
+
 mkdir -v build
 cd       build
+
 ../configure                                       \
     --target=$LFS_TGT                              \
     --prefix=/tools                                \
@@ -59,7 +62,10 @@ cd       build
     --disable-libvtv                               \
     --disable-libstdcxx                            \
     --enable-languages=c,c++
+
 make
+
 make install
+
 cd $LFS/sources
 rm -rf gcc-$gcc_ver

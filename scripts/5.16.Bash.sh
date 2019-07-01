@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.16. Bash-$ver
 
-set -e
-
 ver='5.0'
 
 cd $LFS/sources

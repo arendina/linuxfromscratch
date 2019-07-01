@@ -1,6 +1,5 @@
 #!/bin/bash
 # 5.30. Perl-$ver
-set -e
 
 ver='3.7.2'
 
@@ -17,4 +16,4 @@ make
 make install
 
 cd $LFS/sources
-rm -rf perl-$ver
+rm -rf Python-$ver

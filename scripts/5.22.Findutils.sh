@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.22. Findutils-$ver
 
-set -e
-
 tarball='findutils-4.6.0.tar.gz'
 ver='4.6.0'
 

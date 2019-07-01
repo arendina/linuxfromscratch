@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.17. Bison-$ver
 
-# set -e # make check generates some errors
-
 ver='3.3.2'
 
 cd $LFS/sources

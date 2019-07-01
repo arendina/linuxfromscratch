@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.31. Sed-$ver
 
-set -e
-
 ver='4.7'
 
 cd $LFS/sources

@@ -1,8 +1,6 @@
 #!/bin/bash
 # 5.29. Patch-$ver
 
-set -e
-
 ver='2.7.6'
 
 cd $LFS/sources
