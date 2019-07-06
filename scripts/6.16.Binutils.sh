@@ -1,5 +1,4 @@
 #!/bin/bash
-# 6.16. Binutils-$ver
 
 ver='2.32'
 

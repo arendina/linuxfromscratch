@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# 6.14. M4-$ver
-
 ver='1.4.18'
 
 cd /sources

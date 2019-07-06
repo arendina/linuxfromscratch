@@ -37,6 +37,7 @@ chmod -v a+wt $LFS/sources
 cp -rv /vagrant/sources $LFS
 cp -rv /vagrant/scripts $LFS
 cp -v /vagrant/lfs-{prepare,build,config}.sh $LFS
+cp -v /vagrant/chroot.sh $LFS
 
 # 4.2. Creating the $LFS/tools Directory
 echo "Creating the $LFS/tools Directory"
@@ -67,7 +68,7 @@ LFS=$LFS
 LC_ALL=POSIX
 LFS_TGT=$(uname -m)-lfs-linux-gnu
 PATH=/tools/bin:/bin:/usr/bin
-MAKEFLAGS='-j 2'
+# MAKEFLAGS='-j 2'
 export LFS LC_ALL LFS_TGT PATH MAKEFLAGS
 EOF
 chown -v lfs:lfs /home/lfs/.bash_profile

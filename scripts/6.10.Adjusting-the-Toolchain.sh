@@ -1,5 +1,4 @@
 #!/bin/bash
-# 6.10. Adjusting the Toolchain
 
 mv -v /tools/bin/{ld,ld-old}
 mv -v /tools/$(uname -m)-pc-linux-gnu/bin/{ld,ld-old}
@@ -26,5 +25,4 @@ grep "/lib.*/libc.so.6 " dummy.log
 grep found dummy.log
 
 rm -v dummy.c a.out dummy.log
-
 

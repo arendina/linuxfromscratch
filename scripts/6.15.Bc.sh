@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# 6.15. Bc-$ver
-
 ver='1.07.1'
 
 cd /sources
