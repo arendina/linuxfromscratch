@@ -1,6 +1,9 @@
 #!/bin/bash
 
+name='xz'
 ver='5.2.4'
+
+source_dir="$name-$ver.tar.xz"
 
 cd /sources
 tar -xvf xz-$ver.tar.xz
@@ -21,4 +24,4 @@ mv -v /usr/lib/liblzma.so.* /lib
 ln -svf ../../lib/$(readlink /usr/lib/liblzma.so) /usr/lib/liblzma.so
 
 cd /sources
-rm -rf xz-5.2.3
+rm -rf $source_dir
