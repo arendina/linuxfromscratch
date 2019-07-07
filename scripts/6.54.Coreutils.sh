@@ -38,4 +38,4 @@ mv -v /usr/bin/{head,nice,sleep,touch} /bin
 mv -v /usr/bin/mv /bin
 
 cd /sources
-rm -rf $tarball
+rm -rf $source_dir
