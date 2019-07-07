@@ -21,7 +21,7 @@ make install
 
 mv -vf /usr/bin/bash /bin
 
-exec /bin/bash --login +h
-
 cd /sources
 rm -rf bash-$ver
+
+exec /bin/bash --login +h
