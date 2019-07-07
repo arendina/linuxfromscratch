@@ -43,4 +43,4 @@ make -f udev-lfs-20171102/Makefile.lfs install
 LD_LIBRARY_PATH=/tools/lib udevadm hwdb --update
 
 cd /sources
-rm -rf $ource_dir
+rm -rf $source_dir
