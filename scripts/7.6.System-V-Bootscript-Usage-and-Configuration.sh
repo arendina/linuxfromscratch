@@ -1,5 +1,6 @@
 #!/bin/bash
 # 7.6. System V Bootscript Usage and Configuration
+
 cat > /etc/inittab << "EOF"
 # Begin /etc/inittab
 
@@ -28,10 +29,11 @@ su:S016:once:/sbin/sulogin
 
 # End /etc/inittab
 EOF
+
 cat > /etc/sysconfig/clock << "EOF"
 # Begin /etc/sysconfig/clock
 
-UTC=8
+UTC=1
 
 # Set this to any options you might need to give to hwclock,
 # such as machine hardware clock type for Alphas.
@@ -39,10 +41,11 @@ CLOCKPARAMS=
 
 # End /etc/sysconfig/clock
 EOF
+
 cat > /etc/sysconfig/console << "EOF"
 # Begin /etc/sysconfig/console
 
-KEYMAP="pl2"
+KEYMAP="uk"
 FONT="lat2a-16 -m 8859-2"
 
 # End /etc/sysconfig/console
